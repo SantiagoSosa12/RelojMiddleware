@@ -1,0 +1,16 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+#pantalla{
+    margin: 0 auto;
+    width: 240px;
+    height: 80px;
+    background-color: #708090;
+    margin-top: 270px;
+    border-radius: 10px;
+    border-style: solid;
+    box-shadow: 0px 0px 5px #000 inset,2px 5px 20px #000;
+}
+
