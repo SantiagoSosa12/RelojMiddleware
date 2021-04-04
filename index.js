@@ -20,7 +20,8 @@ app.post('/cambiarHora', (req, res) => {
     console.log(req.body.hora);
     console.log(req.body.minuto);
     console.log(req.body.segundo);
-    var childProcess = exec('sh /home/serverone/RelojMiddleware/Shell/cambiarHora.sh');
+    var childProcess = exec('sh /home/serverone/RelojMiddleware/Shell/cambiarHora.sh ' 
+    + req.body.hora + ':' + req.body.minuto + ':' + req.body.segundo);
     childProcess.stderr.on('data', data => console.error(data));
     childProcess.stdout.on('data', data => console.log(data));
     res.send('Registrado!!');
