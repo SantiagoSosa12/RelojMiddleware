@@ -24,7 +24,7 @@ app.post('/cambiarHora', (req, res) => {
     + req.body.hora + ':' + req.body.minuto + ':' + req.body.segundo);
     childProcess.stderr.on('data', data => console.error(data));
     childProcess.stdout.on('data', data => console.log(data));
-    res.send('Registrado!!');
+    res.send('Se cambio la hora');
 });
 
 function enviarHora(ws){
