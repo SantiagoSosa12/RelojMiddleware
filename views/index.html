@@ -9,5 +9,11 @@
     <body onload="conectarAServidor()">
         <h1>Reloj del Servidor Numero 1</h1>
         <h1 id="Reloj">10 : 10 : 30</h1>
+        <form action="/cambiarHora" method="POST">
+            <input type="number" id="hora" name="hora" min="0" max="23" placeholder="18" required>
+            <input type="number" id="minuto" name="minuto" min="0" max="60" placeholder="06" required>
+            <input type="number" id="segundo" name="segundo" min="0" max="60" placeholder="06" required>
+            <input type="submit" value="Cambiar Hora">
+        </form>
     </body>
 </html>

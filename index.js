@@ -1,3 +1,4 @@
+const { exec } = require('child_process');
 const express = require('express')
 const app = express()
 const server = require('http').createServer(app);
@@ -5,12 +6,24 @@ const WebSocket = require('ws');
 const port = 3000;
 
 app.use(express.static(__dirname + "/views"));
+app.use(express.urlencoded({ extended: true}));
 const wss = new WebSocket.Server({ server:server });
 
 wss.on('connection', function connection(ws) {
     console.log('A new client Connected!');
     ws.send('Welcome New Client!');
     enviarHora();
+});
+
+
+app.post('/cambiarHora', (req, res) => {
+    console.log(req.body.hora);
+    console.log(req.body.minuto);
+    console.log(req.body.segundo);
+    var childProcess = exec('sh /home/serverone/RelojMiddleware/Shell/cambiarHora.sh');
+    childProcess.stderr.on('data', data => console.error(data));
+    childProcess.stdout.on('data', data => console.log(data));
+    res.send('Registrado!!');
 });
 
 function enviarHora(ws){
