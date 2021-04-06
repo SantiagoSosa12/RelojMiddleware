@@ -5,6 +5,9 @@ const server = require('http').createServer(app);
 const WebSocket = require('ws');
 const port = 3000;
 
+var cors = require('cors')
+app.use(cors())
+
 app.use(express.static(__dirname + "/views"));
 app.use(express.urlencoded({ extended: true}));
 const wss = new WebSocket.Server({ server:server });
