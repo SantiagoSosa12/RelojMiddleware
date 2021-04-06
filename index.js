@@ -28,7 +28,7 @@ app.post('/cambiarHora', (req, res) => {
 });
 
 app.post('/sincronizar', (req, res) => {
-    console.log(req.body);
+    console.log(req.body.x);
     res.send('Se cambio la hora');
 });
 
