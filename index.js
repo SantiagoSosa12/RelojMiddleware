@@ -27,6 +27,11 @@ app.post('/cambiarHora', (req, res) => {
     res.send('Se cambio la hora');
 });
 
+app.post('/sincronizar', (req, res) => {
+    console.log(req.body);
+    res.send('Se cambio la hora');
+});
+
 function enviarHora(ws){
     var fecha = new Date();
     var hora = fecha.getHours();
