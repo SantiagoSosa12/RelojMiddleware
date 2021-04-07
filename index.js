@@ -3,10 +3,7 @@ const express = require('express')
 const app = express()
 const server = require('http').createServer(app);
 const WebSocket = require('ws');
-const port = 3000;
-
-var cors = require('cors')
-app.use(cors())
+const port = 3001;
 
 app.use(express.static(__dirname + "/views"));
 app.use(express.urlencoded({ extended: true}));
@@ -30,9 +27,19 @@ app.post('/cambiarHora', (req, res) => {
     res.send('Se cambio la hora');
 });
 
+/**
+ * Se recibe la hora de un servidor externo y se envia 
+ * el desfase 
+ */
 app.post('/sincronizar', (req, res) => {
-    console.log(req.body);
-    res.send('Se cambio la hora');
+    var fecha = new Date();
+    var horaA = fecha.getHours();
+    var minutosA = fecha.getMinutes();
+    var segA = fecha.getSeconds();
+    var desfaseHora = req.body.Hora - horaA;
+    var desfaseMin = req.body.Minuto - minutosA;
+    var desfaseSeg = req.body.Segundo - segA;    
+    res.send(desfaseHora + ":" + desfaseMin + ":" + desfaseSeg);
 });
 
 function enviarHora(ws){
