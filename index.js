@@ -39,6 +39,8 @@ app.post('/cambiarHoraDesfase', (req, res) => {
     + horaA + ':' + minutosA + ':' + segA);
     childProcess.stderr.on('data', data => console.error(data));
     childProcess.stdout.on('data', data => console.log(data));
+    enviarUnDato(fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds()+","
+    +horaA + ":"+minutosA+":"+segA);
     res.send('Se cambio hora con desfase 2');
 });
 
@@ -71,6 +73,14 @@ function enviarHora(ws){
     setTimeout(function(){
         enviarHora(ws);
     } , 500);
+}
+
+function enviarUnDato(dataToSend){
+    wss.clients.forEach(function each(client) {
+        if (client !== ws && client.readyState === WebSocket.OPEN) {
+            client.send(dataToSend);
+        }
+    });
 }
 
 app.get('/', (req, res) => res.send('Hello World!'))
