@@ -30,6 +30,18 @@ app.post('/cambiarHora', (req, res) => {
     res.send('Se cambio la hora');
 });
 
+app.post('/cambiarHoraDesfase', (req, res) => {
+    var fecha = new Date();
+    var horaA = fecha.getHours() + parseInt(req.body.Hora);
+    var minutosA = fecha.getMinutes() + parseInt(req.body.Minuto);
+    var segA = fecha.getSeconds() + parseInt(req.body.Segundo);
+    var childProcess = exec('sh /home/serverone/RelojMiddleware/Shell/cambiarHora.sh ' 
+    + horaA + ':' + minutosA + ':' + segA);
+    childProcess.stderr.on('data', data => console.error(data));
+    childProcess.stdout.on('data', data => console.log(data));
+    res.send('Se cambio hora con desfase');
+});
+
 /**
  * Se recibe la hora de un servidor externo y se envia 
  * el desfase 
