@@ -38,7 +38,8 @@ app.post('/sincronizar', (req, res) => {
     var segA = fecha.getSeconds();
     var desfaseHora = req.body.Hora - horaA;
     var desfaseMin = req.body.Minuto - minutosA;
-    var desfaseSeg = req.body.Segundo - segA;    
+    var desfaseSeg = req.body.Segundo - segA;
+    console.log("Desafe aqui : " + desfaseHora + ":" + desfaseMin + ":" + desfaseSeg);
     res.send(desfaseHora + ":" + desfaseMin + ":" + desfaseSeg);
 });
 
