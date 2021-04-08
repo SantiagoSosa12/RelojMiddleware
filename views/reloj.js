@@ -12,11 +12,7 @@ function conectarAServidor() {
     socket.addEventListener('message', function (event) {
         console.log('Message from server ', event.data);
         var fromServer = event.data + "";
-        if(fromServer.length > 8){
-            fromServer = fromServer.split(",");
-            $(miTabla).find('tbody').append("<tr> <td> aaaa </td> </tr>");
-        }else {
-            document.getElementById('Reloj').innerHTML = "" + event.data;    
-        }
+        console.log(fromServer);
+        document.getElementById('Reloj').innerHTML = "" + event.data;            
     });
 }
