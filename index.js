@@ -20,9 +20,9 @@ wss.on('connection', function connection(ws) {
 
 
 app.post('/cambiarHora', (req, res) => {
-    console.log(req.body.hora);
-    console.log(req.body.minuto);
-    console.log(req.body.segundo);
+    console.log(req.body.Hora);
+    console.log(req.body.Minuto);
+    console.log(req.body.Segundo);
     var childProcess = exec('sh /home/serverone/RelojMiddleware/Shell/cambiarHora.sh ' 
     + req.body.hora + ':' + req.body.minuto + ':' + req.body.segundo);
     childProcess.stderr.on('data', data => console.error(data));
