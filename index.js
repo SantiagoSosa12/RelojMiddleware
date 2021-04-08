@@ -36,7 +36,7 @@ app.post('/sincronizar', (req, res) => {
     var horaA = fecha.getHours();
     var minutosA = fecha.getMinutes();
     var segA = fecha.getSeconds();
-    res.send(req.body.Hora - horaA + ":" + req.body.nodeMinuto - minutosA + ":" + req.body.Segundo - segA);
+    res.send((req.body.Hora - horaA) + ":" + (req.body.nodeMinuto - minutosA) + ":" + (req.body.Segundo - segA));
 });
 
 function enviarHora(ws){
