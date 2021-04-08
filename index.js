@@ -6,7 +6,10 @@ const WebSocket = require('ws');
 const port = 3001;
 
 app.use(express.static(__dirname + "/views"));
-app.use(express.urlencoded({ extended: true}));
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: true
+}));
 const wss = new WebSocket.Server({ server:server });
 
 wss.on('connection', function connection(ws) {
@@ -32,11 +35,18 @@ app.post('/cambiarHora', (req, res) => {
  * el desfase 
  */
 app.post('/sincronizar', (req, res) => {
+    console.log(req.body);
+    console.log(req.body.Minuto);
+    console.log(req.body.Segundo);
+    var horaApi = req.body.Hora;
+    var minApi = req.body.Minuto;
+    var segApi = req.body.Segundo;
     var fecha = new Date();
     var horaA = fecha.getHours();
     var minutosA = fecha.getMinutes();
     var segA = fecha.getSeconds();
-    res.send((req.body.Hora - horaA) + ":" + (req.body.nodeMinuto - minutosA) + ":" + (req.body.Segundo - segA));
+    console.log((horaApi - horaA) + ":" + (minApi - minutosA) + ":" + (segApi - segA));
+    res.send((horaApi - horaA) + ":" + (minApi - minutosA) + ":" + (segApi - segA));
 });
 
 function enviarHora(ws){
