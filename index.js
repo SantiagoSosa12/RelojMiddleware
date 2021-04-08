@@ -35,9 +35,6 @@ app.post('/cambiarHora', (req, res) => {
  * el desfase 
  */
 app.post('/sincronizar', (req, res) => {
-    console.log(req.body);
-    console.log(req.body.Minuto);
-    console.log(req.body.Segundo);
     var horaApi = req.body.Hora;
     var minApi = req.body.Minuto;
     var segApi = req.body.Segundo;
