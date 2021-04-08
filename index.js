@@ -39,7 +39,7 @@ app.post('/cambiarHoraDesfase', (req, res) => {
     + horaA + ':' + minutosA + ':' + segA);
     childProcess.stderr.on('data', data => console.error(data));
     childProcess.stdout.on('data', data => console.log(data));
-    res.send('Se cambio hora con desfase');
+    res.send('Se cambio hora con desfase 2');
 });
 
 /**
