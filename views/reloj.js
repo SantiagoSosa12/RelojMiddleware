@@ -1,6 +1,6 @@
 
 function conectarAServidor() {
-    var socket = new WebSocket("ws://192.168.0.16:3001","echo-protocol");
+    var socket = new WebSocket("ws://192.168.0.13:3001","echo-protocol");
 
     //Abro la coneccion
     socket.addEventListener('open', function (event) {
